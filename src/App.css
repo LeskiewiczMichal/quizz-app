@@ -1,5 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Karla:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #F5F7FB;
+}
+
+.app--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1.5rem;
+  height: 100vh;
+  width: 100vw;
+}
+
+.startscreen--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.startscreen--heading {
+  font-family: 'Karla', sans-serif;
+  font-weight: bold;
+  font-size: 42px;
+  letter-spacing: 1.5px;
+  color: #293264;
+}
+
+.startscreen--text {
+  font-size: 20px;
+  margin: 10px;
+  color: #293264;
+}
+
+.startscreen--button {
+  width: 200px;
+  height: 70px;
+  padding: 10px;
+  margin-top: 15px;
+  
+  background-color: #4D5B9E;
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 3px #bbb8b8;
+  cursor: pointer;
+}
+
+.startscreen--button:hover {
+  background-color: #152261;
 }
