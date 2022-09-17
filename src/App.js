@@ -15,13 +15,13 @@ function App() {
   }, [])
 
 
-  function changePlayGame() {
+  function changeGameStatus() {
     setPlayGame(prevPlayGame => !prevPlayGame)
   }
 
   return (
     <div className="app--container">
-      {playGame ? <QuizzScreen questions={questions}/> : <StartScreen changePlayGame={changePlayGame}/>}
+      {playGame ? <QuizzScreen questions={questions}/> : <StartScreen changeGameStatus={changeGameStatus}/>}
     </div>
   );
 }
