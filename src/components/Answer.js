@@ -1,6 +1,7 @@
 export default function Answer(props)  {
     const text = props.text.replace(/(&quot\;)/g,"\"").replace(/&amp;/g, "&").replace(/&Uuml;/g, "u").replace(/&#039;/g, "'")
 
+    // makes the clicked answer isChosen value true
     function chooseAnswer() {
         props.setAnswers((prevAnswers) => {
           const newAnswers = prevAnswers.map((answer) => {
@@ -14,6 +15,7 @@ export default function Answer(props)  {
         });
       }
 
+    //   changes background color depending on state of the game
       const style = {
         backgroundColor: (function() {
             if (props.gameEnded && props.isRight) {

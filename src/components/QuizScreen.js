@@ -4,13 +4,9 @@ import { nanoid } from 'nanoid';
 
 export default function QuizzScreen(props) {
   const [gameEnded, setGameEnded] = useState(false)
-  // needed to remove syntax $quot in fetched questions
-  //   const question = props.questions.question
-  //     .replace(/(&quot\;)/g, '"')
-  //     .replace(/&amp;/g, '&')
-  //     .replace(/&Uuml;/g, 'u')
-  //     .replace(/&#039;/g, "'")
-  // turn text answers into object containing text and information whether the answer is right or not
+
+  // get answers and make them into object containing various needed information
+  // then shuffle wrong answers with the right one
   function getAnswers(question) {
     const incorrectAnswers = question.incorrect_answers.map((answer) => {
       return {
@@ -35,6 +31,7 @@ export default function QuizzScreen(props) {
     return shuffledAnswers;
   }
 
+  // get answers for every question
   const [answersOne, setAnswersOne] = useState(getAnswers(props.questions[0]));
   const [answersTwo, setAnswersTwo] = useState(getAnswers(props.questions[1]));
   const [answersThree, setAnswersThree] = useState(
@@ -47,6 +44,7 @@ export default function QuizzScreen(props) {
     getAnswers(props.questions[4])
   );
 
+  // put the answers and setter into arrays so they are easily accesible
   const answerArr = [
     answersOne,
     answersTwo,
@@ -62,19 +60,7 @@ export default function QuizzScreen(props) {
     setAnswersFive,
   ];
 
-  // function chooseAnswer(text) {
-  //   setShuffledAnswers((prevAnswers) => {
-  //     const newAnswers = prevAnswers.map((answer) => {
-  //       if (answer.text === text) {
-  //         return { ...answer, isChosen: true };
-  //       } else {
-  //         return { ...answer, isChosen: false };
-  //       }
-  //     });
-  //     return newAnswers;
-  //   });
-  // }
-
+  // make questions array for rendering (used for loop to access different answers on every loop)
   const questions = [];
   for (let i = 0; i < props.questions.length; i++) {
     const question = props.questions[i];
@@ -98,24 +84,6 @@ export default function QuizzScreen(props) {
     props.changeGameStatus()
     props.changeFetchQuestions()
   }
-
-  // WORKED
-  // = props.questions.map((question) => {
-  //   return (
-  //     <Question
-  //       key={question.question}
-  //       text={question.question}
-  //       answers={answersOne}
-  //       setAnswers={setAnswersOne}
-  // chooseAnswer={chooseAnswer}
-  // question={question.question
-  //   .replace(/(&quot\;)/g, '"')
-  //   .replace(/&amp;/g, '&')
-  //   .replace(/&Uuml;/g, 'u')
-  //   .replace(/&#039;/g, "'")}
-  //     />
-  //   );
-  // });
 
   return (
     <div className="quizzscreen--container">
