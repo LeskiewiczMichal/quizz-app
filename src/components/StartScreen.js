@@ -1,9 +1,9 @@
-export default function StartScreen() {
+export default function StartScreen(props) {
     return (
         <div className="startscreen--container">
             <h2 className="startscreen--heading">Quizzical</h2>
             <span className="startscreen--text">Test your knowledge</span>
-            <button className="startscreen--button">Start quiz</button>
+            <button className="startscreen--button" onClick={props.changePlayGame} >Start quiz</button>
         </div>
     )
 }

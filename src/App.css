@@ -136,7 +136,7 @@ body {
   justify-content: center;
   align-items: center;
 
-  height: 35px;
+  min-height: 35px;
   min-width: 100px;
   padding: 0px 8px;
 
