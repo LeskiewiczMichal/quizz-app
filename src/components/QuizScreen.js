@@ -94,6 +94,11 @@ export default function QuizzScreen(props) {
     setGameEnded(prevGameEnded => !prevGameEnded)
   }
 
+  function playAgain() {
+    props.changeGameStatus()
+    props.changeFetchQuestions()
+  }
+
   // WORKED
   // = props.questions.map((question) => {
   //   return (
@@ -116,7 +121,7 @@ export default function QuizzScreen(props) {
     <div className="quizzscreen--container">
       {questions}
       <div className="quizzscreen--button-container">
-        <button onClick={checkAnswers}>{!gameEnded ? 'Check answers' : 'Play Again'}</button>
+        <button onClick={!gameEnded ? checkAnswers : playAgain}>{!gameEnded ? 'Check answers' : 'Play Again'}</button>
       </div>
     </div>
   );

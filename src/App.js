@@ -6,22 +6,26 @@ import { useState, useEffect } from 'react';
 function App() {
   const [playGame, setPlayGame] = useState(false)
   const [questions, setQuestions] = useState([])
+  const [fetchQuestions, setFetchQuestions] = useState(false)
 
   // fetch questions
   useEffect(() => {
     fetch('https://opentdb.com/api.php?amount=5&type=multiple')
       .then(response => response.json())
       .then(data => setQuestions(data.results))
-  }, [])
+  }, [fetchQuestions])
 
 
+  function changeFetchQuestions() {
+    setFetchQuestions(prevFetch => !prevFetch)
+  }
   function changeGameStatus() {
     setPlayGame(prevPlayGame => !prevPlayGame)
   }
 
   return (
     <div className="app--container">
-      {playGame ? <QuizzScreen questions={questions}/> : <StartScreen changeGameStatus={changeGameStatus}/>}
+      {playGame ? <QuizzScreen questions={questions} changeGameStatus={changeGameStatus} changeFetchQuestions={changeFetchQuestions}/> : <StartScreen changeGameStatus={changeGameStatus}/>}
     </div>
   );
 }
